@@ -1,8 +1,8 @@
 {
-  "name": "hw3",
+  "name": "Hollow-Dex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jbpaul1025.github.io/hw3",
+  "homepage": "https://jbpaul1025.github.io/hollow-dex",
   "dependencies": {
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.9.1",

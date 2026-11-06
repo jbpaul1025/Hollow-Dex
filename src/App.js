@@ -1,39 +1,34 @@
-import { useState } from 'react';
-import Header from './header';
-import Content from './content';
-import Footer from './footer';
+import { useState, useEffect } from 'react';
 
 function App() {
-    // Create state variables for the current sort order, search query
-    const [sortBy, setSortBy] = useState('');
-    const [search, setSearch] = useState('');
 
-    // Create state variables for the current page and total pages
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const API_URL = 'https://hallownest-api.vercel.app/api/v1';
+    
+    useEffect(() => {
+    async function fetchData() {
+        try {
+            const response = await fetch(
+                `${API_URL}/boss/false-knight`
+            );
+
+            if (!response.ok) {
+                throw new Error('API request failed');
+            }
+
+            const data = await response.json();
+
+            console.log(data);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    fetchData();
+}, []);
 
     return (
-        <div>
-            <Header
-                sortBy={sortBy}         // prop = {variable}
-                setSortBy={setSortBy}   // prop is received by header
-                search={search}         // variable is passed from app to header
-                setSearch={setSearch}
-            />
-
-            <Content
-                sortBy={sortBy}
-                search={search}
-                page={page}
-                setTotalPages={setTotalPages}
-            />
-
-            <Footer
-                page={page}
-                setPage={setPage}
-                totalPages={totalPages}
-            />
-        </div>
+        <div></div>
     );
 }
 
